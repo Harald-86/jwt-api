@@ -7,18 +7,22 @@ import axios from "axios";
 import FormError from "../common/FormError";
 
 const url = BASE_URL + TOKEN_PATH;
-console.log(url);
+/* console.log(url); */
 
-const schema = yup.object().shape({
-  username: yup.string().required("Brukernavn må skrives inn"),
-  password: yup.string().required("Passord må skrives inn"),
+const schema = yup.object({
+  brukernavn: yup.string().required("Brukernavn må skrives inn"),
+  passord: yup.string().required("Passord må skrives inn"),
 });
 
 export default function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
-  const { register, handleSubmit, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -43,18 +47,18 @@ export default function LoginForm() {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         {loginError && <FormError>{loginError}</FormError>}
-        <fieldset disabled={submitting}>
-          <div>
-            <input name="username" placeholder="Username" ref={register} />
-            {errors.username && <FormError>{errors.username.message}</FormError>}
-          </div>
 
-          <div>
-            <input name="password" placeholder="Password" ref={register} type="password" />
-            {errors.password && <FormError>{errors.password.message}</FormError>}
-          </div>
-          <button>{submitting ? "Loggin in..." : "Login"}</button>
-        </fieldset>
+        <div>
+          <input name="brukernavn" placeholder="Brukernavn" {...register("brukernavn")} />
+          {errors.brukernavn && <FormError>{errors.brukernavn.message}</FormError>}
+        </div>
+
+        <div>
+          <input name="passord" placeholder="Passord" {...register("passord")} type="password" />
+          {errors.passord && <FormError>{errors.passord.message}</FormError>}
+        </div>
+
+        <input type="submit" />
       </form>
     </>
   );
