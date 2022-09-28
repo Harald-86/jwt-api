@@ -10,8 +10,8 @@ const url = BASE_URL + TOKEN_PATH;
 /* console.log(url); */
 
 const schema = yup.object({
-  brukernavn: yup.string().required("Brukernavn må skrives inn"),
-  passord: yup.string().required("Passord må skrives inn"),
+  username: yup.string().required("Brukernavn må skrives inn"),
+  password: yup.string().required("Passord må skrives inn"),
 });
 
 export default function LoginForm() {
@@ -49,12 +49,12 @@ export default function LoginForm() {
         {loginError && <FormError>{loginError}</FormError>}
 
         <div>
-          <input name="brukernavn" placeholder="Brukernavn" {...register("brukernavn")} />
+          <input name="username" placeholder="Brukernavn" {...register("username")} />
           {errors.brukernavn && <FormError>{errors.brukernavn.message}</FormError>}
         </div>
 
         <div>
-          <input name="passord" placeholder="Passord" {...register("passord")} type="password" />
+          <input name="password" placeholder="Passord" {...register("password")} type="password" />
           {errors.passord && <FormError>{errors.passord.message}</FormError>}
         </div>
 
