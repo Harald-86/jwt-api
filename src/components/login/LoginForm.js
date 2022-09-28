@@ -7,6 +7,7 @@ import axios from "axios";
 import FormError from "../common/FormError";
 
 const url = BASE_URL + TOKEN_PATH;
+console.log(url);
 
 const schema = yup.object().shape({
   username: yup.string().required("Brukernavn må skrives inn"),
