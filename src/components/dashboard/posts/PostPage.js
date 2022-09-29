@@ -9,7 +9,7 @@ export default function PostPage() {
       <p>
         <Link to="/dashboard/posts/add">Add post</Link>
       </p>
-      <p>List posts here</p>
+      <p>List of posts goes here</p>
     </DashboardPage>
   );
 }

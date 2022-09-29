@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import FormError from "../common/FormError";
+import ValidationError from "../common/FormError";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -54,19 +54,20 @@ export default function LoginForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError>{loginError}</FormError>}
+        {loginError && <ValidationError>{loginError}</ValidationError>}
+        <fieldset disabled={submitting}>
+          <div>
+            <input name="username" placeholder="Brukernavn" {...register("username")} />
+            {errors.brukernavn && <ValidationError>{errors.brukernavn.message}</ValidationError>}
+          </div>
 
-        <div>
-          <input name="username" placeholder="Brukernavn" {...register("username")} />
-          {errors.brukernavn && <FormError>{errors.brukernavn.message}</FormError>}
-        </div>
+          <div>
+            <input name="password" placeholder="Passord" {...register("password")} type="password" />
+            {errors.passord && <ValidationError>{errors.passord.message}</ValidationError>}
+          </div>
 
-        <div>
-          <input name="password" placeholder="Passord" {...register("password")} type="password" />
-          {errors.passord && <FormError>{errors.passord.message}</FormError>}
-        </div>
-
-        <input type="submit" />
+          <input type="submit" value={submitting ? "Logger inn..." : "Log inn"} />
+        </fieldset>
       </form>
     </>
   );

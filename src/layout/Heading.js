@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 
-function Heading({ title }) {
-  return <h1>{title}</h1>;
+function Heading({ size = "1", title }) {
+  const VariableHeading = `h${size}`;
+  return <VariableHeading>{title}</VariableHeading>;
 }
 
 Heading.propTypes = {
+  size: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
