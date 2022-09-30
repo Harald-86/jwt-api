@@ -22,9 +22,11 @@ export default function DeletePostButton({ id }) {
   }
 
   return (
-    <button type="button" className="delete" onClick={handleDelete}>
-      {error ? "Error" : "Slett post"}
-    </button>
+    <>
+      <input type="button" value="slett" className="delete_post" onClick={handleDelete} />
+
+      {error ? "Error" : " "}
+    </>
   );
 }
 

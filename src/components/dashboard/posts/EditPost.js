@@ -92,7 +92,7 @@ export default function EditPost() {
           </div>
           <input type="submit" value={updated ? "Oppdatert" : "Oppdater"} />
         </fieldset>
-        <DeletePostButton />
+        <DeletePostButton id={post.id} />
       </form>
     </DashboardPage>
   );
