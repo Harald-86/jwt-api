@@ -12,12 +12,15 @@ export default function DeletePostButton({ id }) {
   const url = `/wp/v2/posts/${id}`;
 
   async function handleDelete() {
-    try {
-      await http.delete(url);
-      history("/dashboard/posts");
-    } catch (error) {
-      console.log("error: ", error);
-      setError(error);
+    const confirmDelete = window.confirm("Er du sikker på at du vil slette denne posten? ");
+    if (confirmDelete) {
+      try {
+        await http.delete(url);
+        history("/dashboard/posts");
+      } catch (error) {
+        console.log("error: ", error);
+        setError(error);
+      }
     }
   }
 

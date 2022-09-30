@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
+import Heading from "../../../layout/Heading";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -29,14 +30,17 @@ export default function PostList() {
   if (error) return <div>{error}</div>;
 
   return (
-    <ul className="posts">
-      {posts.map((media) => {
-        return (
-          <li key={media.id}>
-            <Link to={`/dashboard/posts/edit/${media.id}`}>{media.title.rendered}</Link>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <Heading title="Poster" />
+      <ul className="posts">
+        {posts.map((media) => {
+          return (
+            <li key={media.id}>
+              <Link to={`/dashboard/posts/edit/${media.id}`}>{media.title.rendered}</Link>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
