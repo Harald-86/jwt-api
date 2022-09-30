@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 import DashboardPage from "./components/dashboard/DashboardPage";
 import AddPost from "./components/dashboard/posts/AddPost";
 import PostPage from "./components/dashboard/posts/PostPage";
+import EditPost from "./components/dashboard/posts/EditPost";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="dashboard/posts" element={<PostPage />} />
             <Route path="dashboard/posts/add" element={<AddPost />} />
+            <Route path="dashboard/posts/edit/:id" element={<EditPost />} />
           </Routes>
         </div>
       </Router>

@@ -1,5 +1,6 @@
 import Heading from "../../layout/Heading";
 import DashboardMenu from "./DashboardMenu";
+import PostList from "./posts/PostList";
 
 export default function DashboardPage({ children }) {
   return (
@@ -7,6 +8,7 @@ export default function DashboardPage({ children }) {
       <Heading title="Dashboard" />
       <DashboardMenu />
       {children ? children : <p>Select a section</p>}
+      <PostList />
     </>
   );
 }
