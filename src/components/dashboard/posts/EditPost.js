@@ -90,7 +90,7 @@ export default function EditPost() {
           <div>
             <input name="content" defaultValue={post.content.rendered} placeholder="content" {...register("content")} />
           </div>
-          <input type="submit" value={updated ? "Oppdater" : "Oppdaterer.."} />
+          <input type="submit" value={updated ? "Oppdatert" : "Oppdater"} />
         </fieldset>
         <DeletePostButton />
       </form>
